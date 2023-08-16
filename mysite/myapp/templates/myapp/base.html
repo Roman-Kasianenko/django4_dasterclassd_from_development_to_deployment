@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'myapp/styles.css' %}">
+</head>
+<body>
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div class="">
+                        <a href="" class="flex px-2 py-4 items-center">
+                            <img class="h-8 w-8" src="{% static 'myapp/images/shopping.png' %}">
+                            <span class="text-gray-500 font-semibold">Buy&Sell</span>
+                        </a>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <a href="#" class="px-2 py-4 text-gray-500 font-semibold border-b-4 border-green-500">Home</a>
+                        <a href="#" class="px-2 py-4 text-gray-500 font-semibold">About</a>
+                        <a href="#" class="px-2 py-4 text-gray-500 font-semibold">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
