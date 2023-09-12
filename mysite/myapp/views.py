@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
@@ -22,18 +23,21 @@ def product_details(request, id):
     return render(request, "myapp/detail.html", context={'product': product})
 
 
+@login_required
 def add_product(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         price = request.POST.get('price')
         desc = request.POST.get('desc')
         image = request.FILES['upload']
+        seller_name = request.user
 
-        product = Product(name=name, price=price, desc=desc, image=image)
+        product = Product(name=name, price=price, desc=desc, image=image, seller=seller_name)
         product.save()
     return render(request, "myapp/addproduct.html")
 
 
+@login_required
 def update_product(request, id):
     product = Product.objects.get(id=id)
     context = {'product': product}
@@ -51,6 +55,7 @@ def update_product(request, id):
     return render(request, "myapp/update_product.html", context)
 
 
+@login_required
 def delete_product(request, id):
     product = Product.objects.get(id=id)
     context = {'product': product}
@@ -59,3 +64,10 @@ def delete_product(request, id):
         return redirect(to="/myapp/products")
 
     return render(request, 'myapp/delete.html', context)
+
+
+@login_required
+def my_listings(request):
+    products = Product.objects.filter(seller=request.user)
+    context = {'products': products}
+    return render(request, 'myapp/mylistings.html', context=context)

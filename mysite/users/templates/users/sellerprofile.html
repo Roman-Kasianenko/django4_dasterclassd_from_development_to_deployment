@@ -2,13 +2,13 @@
 {% block content %}
     <div class="grid p-10 grid-cols-1 lg:grid-cols-3 sm:grid-cols-1">
         <div class="rounded shadow-lg">
-            <img src="{{ user.profile.image.url }}">
+            <img src="{{ seller.profile.image.url }}">
         </div>
         <div>
-            <h1 class="font-bold text-lg mb-2 px-6 py-4">👤{{ user.username }}</h1>
+            <h1 class="font-bold text-lg mb-2 px-6 py-4">👤{{ seller.username }}</h1>
         </div>
         <div>
-            <h1 class="font-bold text-lg mb-2 px-6 py-4">📞{{ user.profile.contact_number }}</h1>
+            <h1 class="font-bold text-lg mb-2 px-6 py-4">📞{{ seller.profile.contact_number }}</h1>
         </div>
     </div>
 {% endblock %}
