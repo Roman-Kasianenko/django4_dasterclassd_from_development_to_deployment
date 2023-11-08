@@ -3,6 +3,9 @@ from django.db import models
 
 
 # Create your models here.
+from django.urls import reverse
+
+
 class Product(models.Model):
 
     # user = models.OneToOneField(to=User, on_delete=models.CASCADE)
@@ -14,3 +17,6 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.price}"
+
+    def get_absolute_url(self):
+        return reverse("myapp:productsl")
